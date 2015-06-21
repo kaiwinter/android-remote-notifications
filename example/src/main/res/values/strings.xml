@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name_short">ARN Example</string>
+    <string name="app_name_long">AndroidRemoteNotifications Example</string>
+</resources>

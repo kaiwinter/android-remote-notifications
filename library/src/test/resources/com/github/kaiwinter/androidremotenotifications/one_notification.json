@@ -1,0 +1,26 @@
+[
+  {
+    "type": "AlertDialogNotification",
+    "notificationConfiguration": {
+      "startShowingDate": null,
+      "executionPolicy": null,
+      "numberOfTotalViews": null,
+      "versionCodePolicy": null
+    },
+    "title": "Title",
+    "message": "This is a modal message",
+    "negativeButtonText": "Cancel",
+    "neutralButtonText": "Open web page",
+    "positiveButtonText": "Open Play Store",
+    "positiveButtonAction": {
+      "type": "OpenStoreButtonAction",
+      "packageName": "de.vorlesungsfrei.taekwondo.ads"
+    },
+    "negativeButtonAction": null,
+    "neutralButtonAction": {
+      "type": "OpenUrlButtonAction",
+      "link": "http://www.github.com/kaiwinter"
+    },
+    "modal": true
+  }
+]
