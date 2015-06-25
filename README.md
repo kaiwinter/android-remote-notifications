@@ -33,7 +33,7 @@ rn.updateNotifications(UpdatePolicy.NOW, finishListener);
 
 ## Demo
 ### App
-[Download](https://drive.google.com/uc?export=download&id=0B0qVR-zttDRCeXo0SF9RMVhZZHM)
+[Download](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/remotenotifications-example-1.0.0.apk)
 ### Source
 [MainActivity](https://github.com/kaiwinter/android-remote-notifications/blob/master/example/src/main/java/com/github/kaiwinter/androidremotenotifications/example/MainActivity.java)
 
