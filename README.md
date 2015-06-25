@@ -31,11 +31,10 @@ rn.showNotifications(); // if update still runs, event will be queued and carrie
 rn.updateNotifications(UpdatePolicy.NOW, finishListener);
 ```
 
-## Demo
-### App
-[Download](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/remotenotifications-example-1.0.0.apk)
-### Source
-[MainActivity](https://github.com/kaiwinter/android-remote-notifications/blob/master/example/src/main/java/com/github/kaiwinter/androidremotenotifications/example/MainActivity.java)
+## Download
+- [Demo App](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/remotenotifications-example-1.0.0.apk)
+- [android-remote-notifications_1.0.0.aar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications_1.0.0.aar)
+- [android-remote-notifications_1.0.0.jar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications_1.0.0.jar)
 
 ## Screenshots
 ![Preview](http://i.imgur.com/Hp1aowm.png)
