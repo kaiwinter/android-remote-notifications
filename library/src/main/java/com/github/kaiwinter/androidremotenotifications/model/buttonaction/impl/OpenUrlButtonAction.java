@@ -6,8 +6,9 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.kaiwinter.androidremotenotifications.Anp;
 import com.github.kaiwinter.androidremotenotifications.model.buttonaction.ButtonAction;
+
+import static com.github.kaiwinter.androidremotenotifications.RemoteNotifications.TAG;
 
 /**
  * Opens the link with the platform browser.
@@ -24,7 +25,7 @@ public final class OpenUrlButtonAction implements ButtonAction {
 
     @Override
     public void execute(Context context) {
-        Log.v(Anp.TAG, "Opening URL: " + link);
+        Log.v(TAG, "Opening URL: " + link);
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
         context.startActivity(browserIntent);
     }

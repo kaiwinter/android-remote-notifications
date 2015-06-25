@@ -3,7 +3,6 @@ package com.github.kaiwinter.androidremotenotifications.network;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.github.kaiwinter.androidremotenotifications.Anp;
 import com.github.kaiwinter.androidremotenotifications.json.UnMarshaller;
 import com.github.kaiwinter.androidremotenotifications.model.UserNotification;
 
@@ -11,6 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Set;
+
+import static com.github.kaiwinter.androidremotenotifications.RemoteNotifications.TAG;
 
 /**
  * AsyncTask to load notifications from a server.
@@ -36,7 +37,7 @@ public final class NotificationLoaderTask extends AsyncTask<Void, Void, Set<User
         try {
             return UnMarshaller.getNotificationsFromJson(serverUrl);
         } catch (IOException e) {
-            Log.e(Anp.TAG, "Error on requesting JSON from server", e);
+            Log.e(TAG, "Error on requesting JSON from server", e);
             return Collections.emptySet();
         }
     }

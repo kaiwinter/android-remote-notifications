@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
-import com.github.kaiwinter.androidremotenotifications.Anp;
 import com.github.kaiwinter.androidremotenotifications.json.UnMarshaller;
 import com.github.kaiwinter.androidremotenotifications.model.impl.AlertDialogNotification;
 import com.github.kaiwinter.androidremotenotifications.model.impl.PersistentNotification;
@@ -14,6 +13,8 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import static com.github.kaiwinter.androidremotenotifications.RemoteNotifications.TAG;
 
 /**
  * Implementation of {@link NotificationStore} which utilizes Androids Shared Preferences.
@@ -52,7 +53,7 @@ public final class SharedPreferencesStore implements NotificationStore {
 
     @Override
     public void saveLastServerUpdate(Date date) {
-        Log.v(Anp.TAG, date.toString());
+        Log.v(TAG, date.toString());
         Editor edit = sharedPreferences.edit();
         edit.putLong(LAST_SERVER_UPDATE, date.getTime());
         edit.apply();
@@ -67,11 +68,11 @@ public final class SharedPreferencesStore implements NotificationStore {
             try {
                 persistentNotifications = UnMarshaller.getPersistentNotificationsFromJson(json);
             } catch (IOException e) {
-                Log.e(Anp.TAG, "Error loading Persistent Notifications", e);
+                Log.e(TAG, "Error loading Persistent Notifications", e);
             }
         }
 
-        Log.v(Anp.TAG, "Loaded " + persistentNotifications.size() + " Persistent Notifications");
+        Log.v(TAG, "Loaded " + persistentNotifications.size() + " Persistent Notifications");
         return persistentNotifications;
     }
 
@@ -79,7 +80,7 @@ public final class SharedPreferencesStore implements NotificationStore {
     public void updatePersistentNotification(Set<PersistentNotification> updatePersistentNotifications) {
         Set<PersistentNotification> persistentNotifications = getPersistentNotifications();
         for (PersistentNotification updatePersistentNotification : updatePersistentNotifications) {
-            Log.v(Anp.TAG, "Updating " + updatePersistentNotification.toString());
+            Log.v(TAG, "Updating " + updatePersistentNotification.toString());
             persistentNotifications.remove(updatePersistentNotification);
             persistentNotifications.add(updatePersistentNotification);
         }
@@ -94,9 +95,9 @@ public final class SharedPreferencesStore implements NotificationStore {
             editor.putString(PERSISTENT_NOTIFICATIONS, json);
             editor.apply();
 
-            Log.v(Anp.TAG, "Saved " + persistentNotifications.size() + " Persistent Notifications");
+            Log.v(TAG, "Saved " + persistentNotifications.size() + " Persistent Notifications");
         } catch (IOException e) {
-            Log.e(Anp.TAG, "Error saving Persistent Notifications", e);
+            Log.e(TAG, "Error saving Persistent Notifications", e);
         }
     }
 
@@ -105,6 +106,6 @@ public final class SharedPreferencesStore implements NotificationStore {
         Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-        Log.v(Anp.TAG, "Persistent Notifications removed");
+        Log.v(TAG, "Persistent Notifications removed");
     }
 }

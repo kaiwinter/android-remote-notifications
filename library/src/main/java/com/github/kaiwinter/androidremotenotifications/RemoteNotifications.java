@@ -27,16 +27,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * libraries store. Call {@link #showPendingNotificationsToUser(boolean)} to automatically show notifications to the
  * user by an {@link AlertDialog}.
  */
-public final class Anp {
+public final class RemoteNotifications {
 
-    public static final String TAG = "Anp";
+    public static final String TAG = "RemoteNotifications";
 
-    private static final String ANP_PREFERENCES_NAME = "Anp";
+    private static final String ARN_PREFERENCES_NAME = "arn";
 
     private final URL serverUrl;
     private final Context context;
     private final NotificationStore preferenceStore;
-    //private final NotificationConsumer notificationConsumer;
 
     private final Integer appVersionCode;
 
@@ -58,23 +57,23 @@ public final class Anp {
     private boolean scheduledShowEventParameter;
 
     /**
-     * Constructs a new {@link Anp}. The Notifications from the server and the last server update timestamp will be
-     * stored in a Shared Preferences file with the name {@value #ANP_PREFERENCES_NAME}. To change the name use
-     * {@link #Anp(URL, Context, String)}.
+     * Constructs a new {@link RemoteNotifications}. The Notifications from the server and the last server update timestamp will be
+     * stored in a Shared Preferences file with the name {@value #ARN_PREFERENCES_NAME}. To change the name use
+     * {@link #RemoteNotifications(Context, URL, String)}.
      *
      * @param serverUrl The absolute URL to the notification JSON on a server (or file system), not <code>null</code>.
      */
-    public Anp(URL serverUrl, Context context) {
-        this(serverUrl, context, ANP_PREFERENCES_NAME);
+    public RemoteNotifications(Context context, URL serverUrl) {
+        this(context, serverUrl, ARN_PREFERENCES_NAME);
     }
 
     /**
-     * Constructs a new {@link Anp}.
+     * Constructs a new {@link RemoteNotifications}.
      *
      * @param serverUrl            The absolute URL to the notification JSON on a server (or file system), not <code>null</code>.
      * @param sharedPreferenceName The file name to use for the Shared Preferences file.
      */
-    public Anp(URL serverUrl, Context context, String sharedPreferenceName) {
+    public RemoteNotifications(Context context, URL serverUrl, String sharedPreferenceName) {
         if (serverUrl == null) {
             throw new IllegalArgumentException("serverUrl must not be null");
         }
@@ -88,7 +87,6 @@ public final class Anp {
         this.context = context;
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPreferenceName, Context.MODE_PRIVATE);
         this.preferenceStore = new SharedPreferencesStore(sharedPreferences);
-        //this.notificationConsumer = new DialogNotificationConsumer();
         this.appVersionCode = getAppVersionCode(context);
     }
 
@@ -127,6 +125,7 @@ public final class Anp {
             scheduledShowEvent.set(true);
             // store passed parameter
             scheduledShowEventParameter = showAll;
+            return;
         }
 
         Set<PersistentNotification> persistentNotifications = preferenceStore.getPersistentNotifications();
@@ -232,5 +231,18 @@ public final class Anp {
 
     public NotificationStore getPreferenceStore() {
         return preferenceStore;
+    }
+
+    /**
+     * Convenience method to update and show notifications.
+     *
+     * @param context      the application context
+     * @param url          the URL of the JSON file
+     * @param updatePolicy the time between server updates
+     */
+    public static void start(Context context, URL url, UpdatePolicy updatePolicy) {
+        RemoteNotifications remoteNotifications = new RemoteNotifications(context, url);
+        remoteNotifications.updateNotificationsFromServer(updatePolicy);
+        remoteNotifications.showPendingNotificationsToUser();
     }
 }

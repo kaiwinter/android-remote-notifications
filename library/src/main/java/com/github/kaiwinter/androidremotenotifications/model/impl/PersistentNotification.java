@@ -1,9 +1,6 @@
 package com.github.kaiwinter.androidremotenotifications.model.impl;
 
-import android.util.Log;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.kaiwinter.androidremotenotifications.Anp;
 import com.github.kaiwinter.androidremotenotifications.model.UserNotification;
 
 import java.util.Calendar;
@@ -97,7 +94,6 @@ public final class PersistentNotification {
                 return now.after(nextMondayMidnight);
 
             case EVERY_SUNDAY:
-                Log.e(Anp.TAG, "6");
                 Date nextSundayMidnight = nextDayOfWeek(calendar, Calendar.SUNDAY);
                 return now.after(nextSundayMidnight);
 

@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.kaiwinter.androidremotenotifications.Anp;
+import com.github.kaiwinter.androidremotenotifications.RemoteNotifications;
 import com.github.kaiwinter.androidremotenotifications.model.UpdatePolicy;
 import com.github.kaiwinter.androidremotenotifications.model.UserNotification;
 import com.github.kaiwinter.androidremotenotifications.network.NotificationLoaderFinishListener;
@@ -20,7 +20,8 @@ import java.util.Set;
  */
 public class MainActivity extends Activity {
 
-    private Anp anp;
+    private static final String JSON_URL = "https://raw.githubusercontent.com/kaiwinter/android-remote-notifications/master/example/src/test/resources/notifications.json";
+    private RemoteNotifications remoteNotifications;
 
     private TextView textViewStatus;
 
@@ -32,18 +33,18 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         setTitle(R.string.app_name_long);
 
+        textViewStatus = (TextView) findViewById(R.id.textViewStatus);
+        textViewNotifications = (TextView) findViewById(R.id.textViewNotifications);
+
         initializeARN();
     }
 
     private void initializeARN() {
-        textViewStatus = (TextView) findViewById(R.id.textViewStatus);
-        textViewNotifications = (TextView) findViewById(R.id.textViewNotifications);
-
         try {
-            URL url = new URL("http://www.vorlesungsfrei.de/files/test/notifications.json");
-            anp = new Anp(url, this);
+            URL url = new URL(JSON_URL);
+            remoteNotifications = new RemoteNotifications(this, url);
         } catch (MalformedURLException e) {
-            Log.e("ANL-example", "URL cannot be parsed", e);
+            Log.e("ARN-example", "URL cannot be parsed", e);
         }
 
         updateNotificationText();
@@ -60,21 +61,21 @@ public class MainActivity extends Activity {
         };
 
         textViewStatus.setText("Status: running");
-        anp.updateNotificationsFromServer(UpdatePolicy.NOW, listener);
+        remoteNotifications.updateNotificationsFromServer(UpdatePolicy.NOW, listener);
     }
 
     public void showNotifications(View v) {
-        anp.showPendingNotificationsToUser(true);
+        remoteNotifications.showPendingNotificationsToUser(true);
         updateNotificationText();
     }
 
     public void deleteLocalNotifications(View v) {
-        anp.getPreferenceStore().clearPersistentNotifications();
+        remoteNotifications.getPreferenceStore().clearPersistentNotifications();
         textViewStatus.setText("Deleted notifications");
         updateNotificationText();
     }
 
     private void updateNotificationText() {
-        textViewNotifications.setText(anp.getPreferenceStore().getPersistentNotifications().toString());
+        textViewNotifications.setText(remoteNotifications.getPreferenceStore().getPersistentNotifications().toString());
     }
 }

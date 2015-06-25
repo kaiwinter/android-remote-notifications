@@ -19,7 +19,7 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
-public class AnpTest {
+public class RemoteNotificationsTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
@@ -31,9 +31,9 @@ public class AnpTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testMissingServerFile() {
-        URL serverUrl = AnpTest.class.getResource("/not-existing.json");
-        Anp anp = new Anp(serverUrl, RuntimeEnvironment.application.getApplicationContext());
-        anp.updateNotificationsFromServer(UpdatePolicy.NOW);
+        URL serverUrl = RemoteNotificationsTest.class.getResource("/not-existing.json");
+        RemoteNotifications remoteNotifications = new RemoteNotifications(RuntimeEnvironment.application.getApplicationContext(), serverUrl);
+        remoteNotifications.updateNotificationsFromServer(UpdatePolicy.NOW);
     }
 
     /**
@@ -41,14 +41,14 @@ public class AnpTest {
      */
     @Test
     public void testInitialLoad() {
-        URL serverUrl = AnpTest.class.getResource("/com/github/kaiwinter/androidremotenotifications/one_notification.json");
-        Anp anp = new Anp(serverUrl, RuntimeEnvironment.application.getApplicationContext());
+        URL serverUrl = RemoteNotificationsTest.class.getResource("/com/github/kaiwinter/androidremotenotifications/one_notification.json");
+        RemoteNotifications remoteNotifications = new RemoteNotifications(RuntimeEnvironment.application.getApplicationContext(), serverUrl);
 
-        Set<PersistentNotification> persistentNotifications = anp.getPreferenceStore().getPersistentNotifications();
+        Set<PersistentNotification> persistentNotifications = remoteNotifications.getPreferenceStore().getPersistentNotifications();
         assertEquals(0, persistentNotifications.size());
 
-        anp.updateNotificationsFromServer(UpdatePolicy.NOW);
-        persistentNotifications = anp.getPreferenceStore().getPersistentNotifications();
+        remoteNotifications.updateNotificationsFromServer(UpdatePolicy.NOW);
+        persistentNotifications = remoteNotifications.getPreferenceStore().getPersistentNotifications();
         assertEquals(1, persistentNotifications.size());
     }
 
@@ -62,19 +62,19 @@ public class AnpTest {
         Set<PersistentNotification> persistentNotifications = new HashSet<>();
         persistentNotifications.add(notification);
 
-        URL serverUrl = AnpTest.class.getResource("/com/github/kaiwinter/androidremotenotifications/empty_notification.json");
-        Anp anp = new Anp(serverUrl, RuntimeEnvironment.application.getApplicationContext());
-        NotificationStore preferenceStore = anp.getPreferenceStore();
+        URL serverUrl = RemoteNotificationsTest.class.getResource("/com/github/kaiwinter/androidremotenotifications/empty_notification.json");
+        RemoteNotifications remoteNotifications = new RemoteNotifications(RuntimeEnvironment.application.getApplicationContext(), serverUrl);
+        NotificationStore preferenceStore = remoteNotifications.getPreferenceStore();
         preferenceStore.replacePersistentNotifications(persistentNotifications);
 
         // initially filled with one
-        persistentNotifications = anp.getPreferenceStore().getPersistentNotifications();
+        persistentNotifications = remoteNotifications.getPreferenceStore().getPersistentNotifications();
         assertEquals(1, persistentNotifications.size());
 
         // update from server, notification should be removed
-        anp.updateNotificationsFromServer(UpdatePolicy.NOW);
+        remoteNotifications.updateNotificationsFromServer(UpdatePolicy.NOW);
 
-        persistentNotifications = anp.getPreferenceStore().getPersistentNotifications();
+        persistentNotifications = remoteNotifications.getPreferenceStore().getPersistentNotifications();
         assertEquals(0, persistentNotifications.size());
     }
 
@@ -85,12 +85,12 @@ public class AnpTest {
         assertEquals(0, persistentNotification.getShownCounter());
         persistentNotifications.add(persistentNotification);
 
-        URL serverUrl = AnpTest.class.getResource("/com/github/kaiwinter/androidremotenotifications/empty_notification.json");
-        Anp anp = new Anp(serverUrl, RuntimeEnvironment.application.getApplicationContext());
-        NotificationStore preferenceStore = anp.getPreferenceStore();
+        URL serverUrl = RemoteNotificationsTest.class.getResource("/com/github/kaiwinter/androidremotenotifications/empty_notification.json");
+        RemoteNotifications remoteNotifications = new RemoteNotifications(RuntimeEnvironment.application.getApplicationContext(), serverUrl);
+        NotificationStore preferenceStore = remoteNotifications.getPreferenceStore();
         preferenceStore.replacePersistentNotifications(persistentNotifications);
 
-        anp.showPendingNotificationsToUser(true);
+        remoteNotifications.showPendingNotificationsToUser(true);
 
         // Check if show counter is raised
         assertEquals(1, preferenceStore.getPersistentNotifications().iterator().next().getShownCounter());
