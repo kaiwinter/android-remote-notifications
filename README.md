@@ -30,4 +30,12 @@ rn.showNotifications(); // if update still runs, event will be queued and carrie
 // -or, register a listener on update completion-
 rn.updateNotifications(UpdatePolicy.NOW, finishListener);
 ```
-find an example here: [MainActivity](https://github.com/kaiwinter/android-remote-notifications/blob/master/example/src/main/java/com/github/kaiwinter/androidremotenotifications/example/MainActivity.java)
+
+## Demo
+### App
+[Download](https://drive.google.com/uc?export=download&id=0B0qVR-zttDRCeXo0SF9RMVhZZHM)
+### Source
+[MainActivity](https://github.com/kaiwinter/android-remote-notifications/blob/master/example/src/main/java/com/github/kaiwinter/androidremotenotifications/example/MainActivity.java)
+
+## Screenshots
+![Preview](http://i.imgur.com/Hp1aowm.png)
