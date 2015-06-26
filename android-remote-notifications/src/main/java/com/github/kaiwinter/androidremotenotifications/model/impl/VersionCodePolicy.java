@@ -5,7 +5,6 @@ import java.util.Collection;
 /**
  * Defines the app version codes on which a notification should be shown. If the current app install doesn't match this
  * {@link VersionCodePolicy} the notification will not be shown.
- * <p/>
  * There are three ways to define on which versions of your app the notification should be shown: onAllBefore,
  * onAllAfter and onSpecific. You can also mix them but have to keep them sane. Only one of the previous named
  * parameters have to match to let the notification show. They are evaluated in the previous named order.

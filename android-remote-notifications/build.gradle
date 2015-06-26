@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.3'
+    testCompile 'org.robolectric:robolectric:3.0-rc3'
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'com.github.kaiwinter:android-remote-notifications'
+
+    publishedGroupId = 'com.github.kaiwinter'
+    libraryName = 'android-remote-notifications'
+    artifact = 'android-remote-notifications'
+
+    libraryDescription = 'Pulls notifications from a remote JSON file and shows them in your app.'
+
+    siteUrl = 'https://github.com/kaiwinter/android-remote-notifications'
+    gitUrl = 'https://github.com/kaiwinter/android-remote-notifications.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'kaiwinter'
+    developerName = 'Kai Winter'
+    developerEmail = 'kaiwinter@gmx.de'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/kaiwinter/JCenter/master/bintrayv1.gradle'
