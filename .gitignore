@@ -6,5 +6,4 @@ example/build
 android-remote-notifications/build
 .idea
 .gradle
-gradle
 build
