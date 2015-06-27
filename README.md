@@ -1,5 +1,5 @@
 # android-remote-notifications
-A Google GCM/Amazon SNS alternative
+A Google GCM/Amazon SNS alternative using pull instead of push.
 ## Main features
 - Independent user notifications (no Google GCM or Amazon SNS), just put a JSON file in the cloud
 - Framework will update available notifications automatically in defined time intervals (`now`, `daily`, `weekly`, `monthly`)
