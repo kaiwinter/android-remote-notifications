@@ -23,10 +23,14 @@ Maven
   <type>aar</type>
 </dependency>
 ```  
-or Gradle:
+Gradle:
 ```groovy
 compile 'com.github.kaiwinter:android-remote-notifications:1.0.0'
 ```
+Direct:
+- [Demo App](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/remotenotifications-example-1.0.0.apk)
+- [android-remote-notifications_1.0.0.aar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications_1.0.0.aar)
+- [android-remote-notifications_1.0.0.jar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications_1.0.0.jar)
 
 ## How to integrate
 ### The easy way
@@ -45,11 +49,6 @@ rn.showNotifications(); // if update still runs, event will be queued and carrie
 // -or, register a listener on update completion-
 rn.updateNotifications(UpdatePolicy.NOW, finishListener);
 ```
-
-- [Demo App](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/remotenotifications-example-1.0.0.apk)
-- [android-remote-notifications_1.0.0.aar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications_1.0.0.aar)
-- [android-remote-notifications_1.0.0.jar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications_1.0.0.jar)
-
 
 ## Screenshots
 ![Preview](http://i.imgur.com/Hp1aowm.png)
