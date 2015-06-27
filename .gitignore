@@ -1,2 +1,10 @@
-.idea/ 
-local.properties 
+local.properties
+android-remote-notifications/android-remote-notifications.iml
+android-remote-notifications/android-remote-notifications-android-remote-notifications.iml
+example/example.iml
+example/build
+android-remote-notifications/build
+.idea
+.gradle
+gradle
+build
