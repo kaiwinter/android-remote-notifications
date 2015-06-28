@@ -15,6 +15,10 @@ android {
         }
     }
 
+    compileOptions {
+        encoding "UTF-8"
+    }
+
     packagingOptions {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
