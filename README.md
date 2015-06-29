@@ -1,4 +1,5 @@
-# android-remote-notifications [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--remote--notifications-green.svg?style=flat)](https://android-arsenal.com/details/1/2058)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--remote--notifications-green.svg?style=flat)](https://android-arsenal.com/details/1/2058)
+# android-remote-notifications
 A Google GCM/Amazon SNS alternative using pull instead of push.
 ## Main features
 - Independent user notifications (no Google GCM or Amazon SNS), just put a JSON file in the cloud
@@ -33,6 +34,7 @@ Direct:
 - [android-remote-notifications_1.0.0.jar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications_1.0.0.jar)
 
 ## How to integrate
+You can find the source code of the example app here: [MainActivity](https://github.com/kaiwinter/android-remote-notifications/blob/master/example/src/main/java/com/github/kaiwinter/androidremotenotifications/example/MainActivity.java)
 ### The easy way
 - Call `RemoteNotifications.start(context, url, UpdatePolicy.NOW);` in your `onCreate()` or `onResume()` method
 
@@ -68,7 +70,7 @@ First: You don´t have to write the JSON file by hand. Just use the API to initi
   }
 ]
 ```
-### Example of an Alert Notification
+### Example of an AlertDialog Notification
 ```
 [
   {
