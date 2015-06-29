@@ -31,18 +31,34 @@ public final class ToastNotification extends AbstractUserNotification {
         Toast.makeText(context, message, duration).show();
     }
 
+    /**
+     * @return the Toast message
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Sets the Toast message.
+     *
+     * @param message the Toast message
+     */
     public void setMessage(String message) {
         this.message = message;
     }
 
+    /**
+     * @return the Toast duration (either {@link Toast#LENGTH_SHORT} or {@link Toast#LENGTH_LONG}
+     */
     public int getDuration() {
         return duration;
     }
 
+    /**
+     * Sets the Toast duration (either {@link Toast#LENGTH_SHORT} or {@link Toast#LENGTH_LONG}.
+     *
+     * @param duration the Toast duration
+     */
     public void setDuration(int duration) {
         this.duration = duration;
     }
@@ -64,7 +80,6 @@ public final class ToastNotification extends AbstractUserNotification {
 
         if (duration != that.duration) return false;
         return !(message != null ? !message.equals(that.message) : that.message != null);
-
     }
 
     @Override

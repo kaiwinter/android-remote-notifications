@@ -19,6 +19,8 @@ import com.github.kaiwinter.androidremotenotifications.model.impl.ToastNotificat
 public interface UserNotification {
 
     /**
+     * Returns the {@link NotificationConfiguration} of this Notification.
+     *
      * @return the {@link NotificationConfiguration} of this Notification.
      */
     NotificationConfiguration getNotificationConfiguration();

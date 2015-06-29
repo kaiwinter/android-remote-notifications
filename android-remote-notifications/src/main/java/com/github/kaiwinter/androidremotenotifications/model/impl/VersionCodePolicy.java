@@ -55,26 +55,50 @@ public final class VersionCodePolicy {
         return false;
     }
 
+    /**
+     * @return the versionCode before which the notification should be shown
+     */
     public Integer getOnAllBefore() {
         return onAllBefore;
     }
 
+    /**
+     * Sets the versionCode before which the notification should be shown.
+     *
+     * @param onAllBefore the versionCode before which the notification should be shown
+     */
     public void setOnAllBefore(Integer onAllBefore) {
         this.onAllBefore = onAllBefore;
     }
 
+    /**
+     * @return the versionCode after which the notification should be shown
+     */
     public Integer getOnAllAfter() {
         return onAllAfter;
     }
 
+    /**
+     * Set the versionCode after which the notification should be shown.
+     *
+     * @param onAllAfter the versionCode after which the notification should be shown
+     */
     public void setOnAllAfter(Integer onAllAfter) {
         this.onAllAfter = onAllAfter;
     }
 
+    /**
+     * @return the specific app versionCodes on which the notification should be shown
+     */
     public Collection<Integer> getOnSpecific() {
         return onSpecific;
     }
 
+    /**
+     * Sets specific app versionCodes on which the notification should be shown.
+     *
+     * @param onSpecific the app versionCodes on which the notification should be shown
+     */
     public void setOnSpecific(Collection<Integer> onSpecific) {
         this.onSpecific = onSpecific;
     }

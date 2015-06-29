@@ -27,9 +27,6 @@ public enum UpdatePolicy {
 
     private final long interval;
 
-    /**
-     * @param interval Interval in which no updates should be triggered.
-     */
     UpdatePolicy(long interval) {
         this.interval = interval;
     }

@@ -61,6 +61,7 @@ public final class RemoteNotifications {
      * stored in a Shared Preferences file with the name {@value #ARN_PREFERENCES_NAME}. To change the name use
      * {@link #RemoteNotifications(Context, URL, String)}.
      *
+     * @param context   The application context
      * @param serverUrl The absolute URL to the notification JSON on a server (or file system), not <code>null</code>.
      */
     public RemoteNotifications(Context context, URL serverUrl) {
@@ -70,6 +71,7 @@ public final class RemoteNotifications {
     /**
      * Constructs a new {@link RemoteNotifications}.
      *
+     * @param context              The application context
      * @param serverUrl            The absolute URL to the notification JSON on a server (or file system), not <code>null</code>.
      * @param sharedPreferenceName The file name to use for the Shared Preferences file.
      */
@@ -149,6 +151,13 @@ public final class RemoteNotifications {
         }
     }
 
+    /**
+     * Starts an AsyncTask which loads the notifications from the server, removes local notifications which doesn't exist anymore and adds new
+     * one.
+     *
+     * @param updatePolicy Use this parameter to reduce the number of server calls, not <code>null</code>.
+     * @param listener     a {@link NotificationLoaderFinishListener} which is called after the update of the notifications finished.
+     */
     public void updateNotificationsFromServer(UpdatePolicy updatePolicy, final NotificationLoaderFinishListener listener) {
         if (updatePolicy == null) {
             throw new IllegalArgumentException("updatePolicy must not be null");
@@ -229,6 +238,9 @@ public final class RemoteNotifications {
         }
     }
 
+    /**
+     * @return the internally used store of the notifications
+     */
     public NotificationStore getPreferenceStore() {
         return preferenceStore;
     }

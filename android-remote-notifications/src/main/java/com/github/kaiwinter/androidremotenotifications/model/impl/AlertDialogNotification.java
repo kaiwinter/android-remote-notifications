@@ -52,7 +52,7 @@ public final class AlertDialogNotification extends AbstractUserNotification {
     private ButtonAction neutralButtonAction;
 
     /**
-     * If true, the user must push the positive or negative button. The back button and tapping the app in the
+     * If true, the user must push one of the buttons. The back button and tapping the app in the
      * background won't close the dialog.
      */
     private boolean modal;
@@ -119,74 +119,165 @@ public final class AlertDialogNotification extends AbstractUserNotification {
         builder.create().show();
     }
 
+    /**
+     * Returns the title of the AlertDialog.
+     *
+     * @return the title of the AlertDialog.
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Sets the title of the AlertDialog.
+     *
+     * @param title the title of the AlertDialog.
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * Returns the message of the AlertDialog.
+     *
+     * @return the message of the AlertDialog
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Sets the message of the AlertDialog.
+     *
+     * @param message the message of the AlertDialog
+     */
     public void setMessage(String message) {
         this.message = message;
     }
 
+    /**
+     * Returns the caption of the positive button.
+     *
+     * @return the caption of the positive button
+     */
     public String getPositiveButtonText() {
         return positiveButtonText;
     }
 
+    /**
+     * Sets the caption of the positive button. If <code>null</code> the button won't be shown.
+     *
+     * @param positiveButtonText the caption of the positive button
+     */
     public void setPositiveButtonText(String positiveButtonText) {
         this.positiveButtonText = positiveButtonText;
     }
 
+    /**
+     * Returns the caption of the negative button.
+     *
+     * @return the caption of the negative button
+     */
     public String getNegativeButtonText() {
         return negativeButtonText;
     }
 
+    /**
+     * Sets the caption of the negative button. If <code>null</code> the button won't be shown.
+     *
+     * @param negativeButtonText the caption of the negative button
+     */
     public void setNegativeButtonText(String negativeButtonText) {
         this.negativeButtonText = negativeButtonText;
     }
 
+    /**
+     * Returns the Action to carry out when the user selects the positive button.
+     *
+     * @return the Action to carry out when the user selects the positive button.
+     */
     public ButtonAction getPositiveButtonAction() {
         return positiveButtonAction;
     }
 
+    /**
+     * Sets the Action to carry out when the user selects the positive button.
+     *
+     * @param positiveButtonAction the Action to carry out when the user selects the positive button
+     */
     public void setPositiveButtonAction(ButtonAction positiveButtonAction) {
         this.positiveButtonAction = positiveButtonAction;
     }
 
+    /**
+     * Returns the Action to carry out when the user selects the negative button.
+     *
+     * @return the Action to carry out when the user selects the negative button.
+     */
     public ButtonAction getNegativeButtonAction() {
         return negativeButtonAction;
     }
 
+    /**
+     * Sets the Action to carry out when the user selects the negative button.
+     *
+     * @param negativeButtonAction the Action to carry out when the user selects the negative button
+     */
     public void setNegativeButtonAction(ButtonAction negativeButtonAction) {
         this.negativeButtonAction = negativeButtonAction;
     }
 
+    /**
+     * Returns if the AlertDialog is modal.
+     *
+     * @return true if the AlertDialog is modal, else false
+     */
     public boolean isModal() {
         return modal;
     }
 
+    /**
+     * Sets if the AlertDialog is modal. If true, the user must push one of the buttons. The back button and tapping the app in the
+     * background won't close the dialog.
+     *
+     * @param modal true if the AlertDialog is modal, else false
+     */
     public void setModal(boolean modal) {
         this.modal = modal;
     }
 
+    /**
+     * Returns the caption of the neutral button.
+     *
+     * @return the caption of the neutral button
+     */
     public String getNeutralButtonText() {
         return neutralButtonText;
     }
 
+    /**
+     * Sets the caption of the neutral button. If <code>null</code> the button won't be shown.
+     *
+     * @param neutralButtonText the caption of the neutral button
+     */
     public void setNeutralButtonText(String neutralButtonText) {
         this.neutralButtonText = neutralButtonText;
     }
 
+    /**
+     * Returns the Action to carry out when the user selects the neutral button.
+     *
+     * @return the Action to carry out when the user selects the neutral button.
+     */
     public ButtonAction getNeutralButtonAction() {
         return neutralButtonAction;
     }
 
+    /**
+     * Sets the Action to carry out when the user selects the neutral button.
+     *
+     * @param neutralButtonAction the Action to carry out when the user selects the neutral button
+     */
     public void setNeutralButtonAction(ButtonAction neutralButtonAction) {
         this.neutralButtonAction = neutralButtonAction;
     }

@@ -37,6 +37,12 @@ public final class PersistentNotification {
         this.notification = notification;
     }
 
+    /**
+     * Checks whether the {@link UserNotification} has to be shown considering the {@link NotificationConfiguration}.
+     *
+     * @param appVersionCode the app´s versionCode
+     * @return true if the notification has to be shown, else false
+     */
     public boolean hasToBeShown(int appVersionCode) {
         NotificationConfiguration notificationConfiguration = notification.getNotificationConfiguration();
 
@@ -112,22 +118,47 @@ public final class PersistentNotification {
         return calendar.getTime();
     }
 
+    /**
+     * Returns the time when the notification was shown the last time.
+     *
+     * @return the time when the notification was shown the last time
+     */
     public Date getLastShown() {
         return lastShown;
     }
 
+    /**
+     * Sets the time when the notification was shown the last time.
+     *
+     * @param lastShown the time when the notification was shown the last time
+     */
     public void setLastShown(Date lastShown) {
         this.lastShown = lastShown;
     }
 
+    /**
+     * Returns the number of times the notification was shown already.
+     *
+     * @return the number of times the notification was shown already.
+     */
     public int getShownCounter() {
         return shownCounter;
     }
 
+    /**
+     * Sets the number of times the notification was shown already.
+     *
+     * @param shownCounter the number of times the notification was shown already.
+     */
     public void setShownCounter(int shownCounter) {
         this.shownCounter = shownCounter;
     }
 
+    /**
+     * Returns the notification to show.
+     *
+     * @return the notification to show
+     */
     public UserNotification getNotification() {
         return notification;
     }

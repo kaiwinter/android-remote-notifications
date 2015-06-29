@@ -21,7 +21,7 @@ public final class UnMarshaller {
      *
      * @param notifications the notifications
      * @return the JSON string
-     * @throws IOException
+     * @throws IOException if writing the notifications as JSON fails
      */
     public static String getJsonFromPersistentNotifications(Set<PersistentNotification> notifications)
             throws IOException {
@@ -35,7 +35,7 @@ public final class UnMarshaller {
      *
      * @param notifications the notifications
      * @return the JSON string
-     * @throws IOException
+     * @throws IOException if writing the notifications as JSON fails
      */
     public static String getJsonFromNotifications(Set<UserNotification> notifications) throws IOException {
 
@@ -48,7 +48,7 @@ public final class UnMarshaller {
      *
      * @param url the URL which is parsed as JSON
      * @return Set of {@link UserNotification}s
-     * @throws IOException
+     * @throws IOException if reading the JSON from the URL fails
      */
     public static Set<UserNotification> getNotificationsFromJson(URL url) throws IOException {
         ObjectReader or = new ObjectMapper().reader().withType(new TypeReference<Set<UserNotification>>() {
@@ -62,7 +62,7 @@ public final class UnMarshaller {
      *
      * @param json the JSON string.
      * @return Set of {@link PersistentNotification}
-     * @throws IOException
+     * @throws IOException if reading the JSON from the string fails
      */
     public static Set<PersistentNotification> getPersistentNotificationsFromJson(String json) throws IOException {
         ObjectReader or = new ObjectMapper().reader().withType(new TypeReference<Set<PersistentNotification>>() {
