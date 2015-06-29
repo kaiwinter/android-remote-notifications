@@ -1,4 +1,4 @@
-# android-remote-notifications
+# android-remote-notifications [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--remote--notifications-green.svg?style=flat)](https://android-arsenal.com/details/1/2058)
 A Google GCM/Amazon SNS alternative using pull instead of push.
 ## Main features
 - Independent user notifications (no Google GCM or Amazon SNS), just put a JSON file in the cloud
