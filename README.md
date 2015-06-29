@@ -50,6 +50,55 @@ rn.showNotifications(); // if update still runs, event will be queued and carrie
 rn.updateNotifications(UpdatePolicy.NOW, finishListener);
 ```
 
+## How to build a JSON notification file
+### Example of a Toast Notification
+```
+[
+  {
+    "type": "ToastNotification",
+    "notificationConfiguration": {
+      "startShowingDate": null,
+      "executionPolicy": "ALWAYS",
+      "numberOfTotalViews": null,
+      "versionCodePolicy": null
+    },
+    "message": "This is a Toast Notification",
+    "duration": 1
+  }
+]
+```
+### Example of an Alert Notification
+```
+[
+  {
+    "type": "AlertDialogNotification",
+    "notificationConfiguration": {
+      "startShowingDate": null,
+      "executionPolicy": null,
+      "numberOfTotalViews": null,
+      "versionCodePolicy": null
+    },
+    "title": "Title",
+    "message": "This is an AlertDialog notification",
+    "negativeButtonText": "Exit App",
+    "neutralButtonText": "Open web page",
+    "positiveButtonText": "Open Play Store",
+    "positiveButtonAction": {
+      "type": "OpenStoreButtonAction",
+      "packageName": "de.vorlesungsfrei.taekwondo.ads"
+    },
+    "negativeButtonAction": {
+      "type": "ExitAppButtonAction"
+    },
+    "neutralButtonAction": {
+      "type": "OpenUrlButtonAction",
+      "link": "https://github.com/kaiwinter/android-remote-notifications"
+    },
+    "modal": false
+  }
+]
+```
+
 ## Screenshots
 ![Preview](http://i.imgur.com/Hp1aowm.png)
 
