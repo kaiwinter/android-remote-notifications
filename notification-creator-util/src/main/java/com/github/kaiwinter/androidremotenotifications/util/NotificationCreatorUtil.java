@@ -1,7 +1,5 @@
 package com.github.kaiwinter.androidremotenotifications.util;
 
-import android.widget.Toast;
-
 import com.github.kaiwinter.androidremotenotifications.json.UnMarshaller;
 import com.github.kaiwinter.androidremotenotifications.model.ExecutionPolicy;
 import com.github.kaiwinter.androidremotenotifications.model.UserNotification;
@@ -42,7 +40,7 @@ public final class NotificationCreatorUtil {
 
         // Create Toast Notification
         ToastNotification toastNotification = new ToastNotification(notificationConfiguration);
-        toastNotification.setDuration(Toast.LENGTH_LONG);
+        toastNotification.setDuration(1);
         toastNotification.setMessage("This is a Toast Notification");
 
         // Print JSON to console

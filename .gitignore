@@ -1,7 +1,5 @@
 local.properties
-android-remote-notifications/android-remote-notifications.iml
-android-remote-notifications/android-remote-notifications-android-remote-notifications.iml
-example/example.iml
 .idea
 .gradle
 build
+*.iml

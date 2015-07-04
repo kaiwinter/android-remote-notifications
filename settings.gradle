@@ -1,1 +1,1 @@
-include ':android-remote-notifications', ':example'
+include ':android-remote-notifications', ':example', ':notification-creator-util'

@@ -54,7 +54,7 @@ rn.updateNotifications(UpdatePolicy.NOW, finishListener);
 ```
 
 ## How to build a JSON notification file
-First: You don´t have to write the JSON file by hand. Just use the API to initialize a Notification object and then create JSON from it: [NotificationCreatorUtil ](https://github.com/kaiwinter/android-remote-notifications/blob/master/android-remote-notifications/src/main/java/com/github/kaiwinter/androidremotenotifications/util/NotificationCreatorUtil.java)
+First: You don´t have to write the JSON file by hand. Just use the API to initialize a Notification object and then create JSON from it: [NotificationCreatorUtil ](https://github.com/kaiwinter/android-remote-notifications/blob/master/notifications-creator-util/src/main/java/com/github/kaiwinter/androidremotenotifications/util/NotificationCreatorUtil.java)
 ### Example of a Toast Notification
 ```
 [

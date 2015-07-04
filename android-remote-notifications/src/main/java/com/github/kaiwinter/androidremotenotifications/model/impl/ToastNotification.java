@@ -55,7 +55,7 @@ public final class ToastNotification extends AbstractUserNotification {
     }
 
     /**
-     * Sets the Toast duration (either {@link Toast#LENGTH_SHORT} or {@link Toast#LENGTH_LONG}.
+     * Sets the Toast duration (either {@link Toast#LENGTH_SHORT} (0) or {@link Toast#LENGTH_LONG} (1).
      *
      * @param duration the Toast duration
      */
