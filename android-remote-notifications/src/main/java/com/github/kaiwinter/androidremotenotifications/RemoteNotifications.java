@@ -182,6 +182,7 @@ public final class RemoteNotifications {
                 Log.v(TAG, "Received " + notifications.size() + " notifications");
                 handleNotificationsFromServer(notifications);
                 notificationUpdateRunning.set(false);
+                preferenceStore.saveLastServerUpdate(new Date());
                 if (scheduledShowEvent.getAndSet(false)) {
                     Log.v(TAG, "executing scheduled show event");
                     showPendingNotificationsToUser(scheduledShowEventParameter);
