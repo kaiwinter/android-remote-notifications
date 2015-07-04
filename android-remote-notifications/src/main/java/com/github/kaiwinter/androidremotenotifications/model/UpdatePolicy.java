@@ -1,5 +1,7 @@
 package com.github.kaiwinter.androidremotenotifications.model;
 
+import com.github.kaiwinter.androidremotenotifications.RemoteNotifications;
+
 import java.util.Date;
 
 /**
@@ -14,13 +16,19 @@ public enum UpdatePolicy {
     NOW(0),
 
     /**
-     * The update is made once a week only. @{link Anp} uses an internal shared preference to track when the last update
+     * The update is made once a week. {@link RemoteNotifications} uses an internal shared preference to track when the last update
      * was.
      */
     WEEKLY(7 * 24 * 60 * 60 * 1000),
 
     /**
-     * The update is made once a month only. @{link Anp} uses an internal shared preference to track when the last
+     * The update is made every second week. {@link RemoteNotifications} uses an internal shared preference to track when the last update
+     * was.
+     */
+    BI_WEEKLY(WEEKLY.getInterval() * 2),
+
+    /**
+     * The update is made once a month. {@link RemoteNotifications} uses an internal shared preference to track when the last
      * update was.
      */
     MONTHLY(WEEKLY.getInterval() * 4);
