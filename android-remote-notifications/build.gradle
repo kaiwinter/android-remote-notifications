@@ -1,3 +1,6 @@
+plugins {
+    id 'net.researchgate.release' version '2.1.2'
+}
 apply plugin: 'com.android.library'
 
 android {
