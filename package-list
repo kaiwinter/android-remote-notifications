@@ -1,0 +1,9 @@
+com.github.kaiwinter.androidremotenotifications
+com.github.kaiwinter.androidremotenotifications.json
+com.github.kaiwinter.androidremotenotifications.model
+com.github.kaiwinter.androidremotenotifications.model.buttonaction
+com.github.kaiwinter.androidremotenotifications.model.buttonaction.impl
+com.github.kaiwinter.androidremotenotifications.model.impl
+com.github.kaiwinter.androidremotenotifications.network
+com.github.kaiwinter.androidremotenotifications.persistence
+com.github.kaiwinter.androidremotenotifications.persistence.impl
