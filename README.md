@@ -26,13 +26,12 @@ Maven
 ```  
 Gradle:
 ```groovy
-compile 'com.github.kaiwinter:android-remote-notifications:1.0.0'
+compile 'com.github.kaiwinter:android-remote-notifications:1.1.0'
 ```
 Direct:
-- [Demo App](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/remotenotifications-example-1.0.0.apk)
-- [android-remote-notifications_1.0.0.aar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications_1.0.0.aar)
-- [android-remote-notifications_1.0.0.jar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications_1.0.0.jar)
-- [android-remote-notifications_1.0.0-all.jar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.0.0/android-remote-notifications-1.0.0-all.jar) This contains all jackson dependencies. I use this in an eclipse ant build
+- [Demo App](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.1.0/remotenotifications-example-1.1.0.apk)
+- [android-remote-notifications_1.1.0.aar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.1.0/android-remote-notifications-1.1.0.aar)
+- [android-remote-notifications_1.1.0-all.jar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.1.0/android-remote-notifications-1.1.0-all.jar) This contains all jackson dependencies. I use this in an eclipse ant build
 
 ## How to integrate
 You can find the source code of the example app here: [MainActivity](https://github.com/kaiwinter/android-remote-notifications/blob/master/example/src/main/java/com/github/kaiwinter/androidremotenotifications/example/MainActivity.java)
@@ -54,7 +53,7 @@ rn.updateNotifications(UpdatePolicy.NOW, finishListener);
 ```
 
 ## How to build a JSON notification file
-First: You don´t have to write the JSON file by hand. Just use the API to initialize a Notification object and then create JSON from it: [NotificationCreatorUtil ](https://github.com/kaiwinter/android-remote-notifications/blob/master/notifications-creator-util/src/main/java/com/github/kaiwinter/androidremotenotifications/util/NotificationCreatorUtil.java)
+First: You don´t have to write the JSON file by hand. Just use the API to initialize a Notification object and then create JSON from it: [NotificationCreatorUtil ](https://github.com/kaiwinter/android-remote-notifications/blob/master/notification-creator-util/src/main/java/com/github/kaiwinter/androidremotenotifications/util/NotificationCreatorUtil.java)
 ### Example of a Toast Notification
 ```
 [
