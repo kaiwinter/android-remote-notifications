@@ -80,7 +80,7 @@ First: You don´t have to write the JSON file by hand. Just use the API to initi
     "type": "AlertDialogNotification",
     "notificationConfiguration": {
       "startShowingDate": null,
-      "executionPolicy": null,
+      "executionPolicy": "ALWAYS",
       "numberOfTotalViews": null,
       "versionCodePolicy": null
     },
