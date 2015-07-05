@@ -31,6 +31,9 @@ public abstract class AbstractUserNotification implements UserNotification {
         return notificationConfiguration;
     }
 
+    /**
+     * hashCode/equals must be implemented to synchronized the notifications with the ones from the server.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,6 +43,9 @@ public abstract class AbstractUserNotification implements UserNotification {
         return !(notificationConfiguration != null ? !notificationConfiguration.equals(that.notificationConfiguration) : that.notificationConfiguration != null);
     }
 
+    /**
+     * hashCode/equals must be implemented to synchronized the notifications with the ones from the server.
+     */
     @Override
     public int hashCode() {
         return notificationConfiguration != null ? notificationConfiguration.hashCode() : 0;
