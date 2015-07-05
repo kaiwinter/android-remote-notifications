@@ -1,6 +1,3 @@
-plugins {
-    id 'net.researchgate.release' version '2.1.2'
-}
 apply plugin: 'com.android.library'
 
 android {
@@ -10,7 +7,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0"
+        versionName version
     }
     buildTypes {
         release {
@@ -51,7 +48,7 @@ ext {
     siteUrl = 'https://github.com/kaiwinter/android-remote-notifications'
     gitUrl = 'https://github.com/kaiwinter/android-remote-notifications.git'
 
-    libraryVersion = '1.0.0'
+    libraryVersion = version
 
     developerId = 'kaiwinter'
     developerName = 'Kai Winter'
