@@ -25,7 +25,7 @@ public final class NotificationCreatorUtil {
         notificationConfiguration.setExecutionPolicy(ExecutionPolicy.ALWAYS);
 
         // Create AlertDialog notification
-        AlertDialogNotification notification = new AlertDialogNotification();
+        AlertDialogNotification notification = new AlertDialogNotification(notificationConfiguration);
         notification.setTitle("Title");
         notification.setMessage("This is an AlertDialog notification");
 
