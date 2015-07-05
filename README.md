@@ -3,7 +3,7 @@
 A Google GCM/Amazon SNS alternative using pull instead of push.
 ## Main features
 - Independent user notifications (no Google GCM or Amazon SNS), just put a JSON file in the cloud
-- Framework will update available notifications automatically in defined time intervals (`now`, `daily`, `weekly`, `monthly`)
+- Framework will update available notifications automatically in defined time intervals (`now`, `daily`, `bi-weekly`, `weekly`, `monthly`)
 - Flexible parameters:
   - start date for notification (distribute early, show later)
   - amount of times the notification should be shown
@@ -20,7 +20,7 @@ Maven
 <dependency>
   <groupId>com.github.kaiwinter</groupId>
   <artifactId>android-remote-notifications</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <type>aar</type>
 </dependency>
 ```  
@@ -33,6 +33,9 @@ Direct:
 - [android-remote-notifications_1.1.0.aar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.1.0/android-remote-notifications-1.1.0.aar)
 - [android-remote-notifications_1.1.0-all.jar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.1.0/android-remote-notifications-1.1.0-all.jar) This contains all jackson dependencies. I use this in an eclipse ant build
 
+## Live Demo:
+[Appetize.io](https://appetize.io/app/efkur5jaxuztahp6wtc5n65x74)
+
 ## How to integrate
 You can find the source code of the example app here: [MainActivity](https://github.com/kaiwinter/android-remote-notifications/blob/master/example/src/main/java/com/github/kaiwinter/androidremotenotifications/example/MainActivity.java)
 ### The easy way
@@ -44,7 +47,7 @@ this will
  
 ### For more control
 ```java
-RemoteNotifications rn = new RemoteNotifications(context);
+RemoteNotifications rn = new RemoteNotifications(context, url);
 rn.updateNotifications(UpdatePolicy.NOW);
 rn.showNotifications(); // if update still runs, event will be queued and carried out later
 
