@@ -108,6 +108,16 @@ First: You don´t have to write the JSON file by hand. Just use the API to initi
 ## Screenshots
 ![Preview](http://i.imgur.com/Hp1aowm.png)
 
+## ProGuard
+To keep the jackson annotations add this to your ProGuard configuration.
+```
+# android-remote-notifications
+-keepattributes *Annotation*,EnclosingMethod,Signature
+-keepnames class com.fasterxml.jackson.** { *; }
+-dontwarn com.fasterxml.jackson.databind.**
+-keep public class com.github.kaiwinter.** {*;}
+```
+
 ## License
      Copyright 2015 Kai Winter
      
