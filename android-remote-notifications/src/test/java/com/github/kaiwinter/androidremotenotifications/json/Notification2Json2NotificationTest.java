@@ -27,7 +27,7 @@ public final class Notification2Json2NotificationTest {
     }
 
     @Test
-    public void testPersistentNotification() throws IOException {
+    public void testPersistentNotification() {
         NotificationConfiguration notificationConfiguration = new NotificationConfiguration();
         notificationConfiguration.setExecutionPolicy(ExecutionPolicy.ALWAYS);
         notificationConfiguration.setExecutionPolicy(ExecutionPolicy.EVERY_MONDAY);

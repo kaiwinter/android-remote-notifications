@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 public class RemoteNotificationsTest {
 
     @BeforeClass
-    public static void setUp() throws Exception {
+    public static void setUp() {
         ShadowLog.stream = System.out;
     }
 

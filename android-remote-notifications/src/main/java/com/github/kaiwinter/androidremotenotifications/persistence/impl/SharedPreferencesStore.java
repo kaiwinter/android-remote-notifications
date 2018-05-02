@@ -9,7 +9,6 @@ import com.github.kaiwinter.androidremotenotifications.model.impl.AlertDialogNot
 import com.github.kaiwinter.androidremotenotifications.model.impl.PersistentNotification;
 import com.github.kaiwinter.androidremotenotifications.persistence.NotificationStore;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -65,11 +64,7 @@ public final class SharedPreferencesStore implements NotificationStore {
 
         if (sharedPreferences.contains(PERSISTENT_NOTIFICATIONS)) {
             String json = sharedPreferences.getString(PERSISTENT_NOTIFICATIONS, null);
-            try {
-                persistentNotifications = UnMarshaller.getPersistentNotificationsFromJson(json);
-            } catch (IOException e) {
-                Log.e(TAG, "Error loading Persistent Notifications", e);
-            }
+            persistentNotifications = UnMarshaller.getPersistentNotificationsFromJson(json);
         }
 
         Log.v(TAG, "Loaded " + persistentNotifications.size() + " Persistent Notifications");
@@ -89,16 +84,12 @@ public final class SharedPreferencesStore implements NotificationStore {
 
     @Override
     public void replacePersistentNotifications(Set<PersistentNotification> persistentNotifications) {
-        try {
-            String json = UnMarshaller.getJsonFromPersistentNotifications(persistentNotifications);
-            Editor editor = sharedPreferences.edit();
-            editor.putString(PERSISTENT_NOTIFICATIONS, json);
-            editor.apply();
+        String json = UnMarshaller.getJsonFromPersistentNotifications(persistentNotifications);
+        Editor editor = sharedPreferences.edit();
+        editor.putString(PERSISTENT_NOTIFICATIONS, json);
+        editor.apply();
 
-            Log.v(TAG, "Saved " + persistentNotifications.size() + " Persistent Notifications");
-        } catch (IOException e) {
-            Log.e(TAG, "Error saving Persistent Notifications", e);
-        }
+        Log.v(TAG, "Saved " + persistentNotifications.size() + " Persistent Notifications");
     }
 
     @Override

@@ -1,38 +1,29 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 22
-        versionCode 1
+        targetSdkVersion 26
+        versionCode 2
         versionName version
     }
     buildTypes {
         release {
             minifyEnabled false
-        }
+		}
     }
 
     compileOptions {
         encoding "UTF-8"
     }
-
-    packagingOptions {
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.4'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.4.4'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.4.4'
-    testCompile 'org.robolectric:robolectric:3.0-rc3'
+    compile 'com.google.code.gson:gson:2.8.4'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.robolectric:robolectric:3.8'
 }
 
 ext {

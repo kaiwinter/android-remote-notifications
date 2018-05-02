@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.kaiwinter.androidremotenotifications.model.buttonaction.ButtonAction;
 
 /**
@@ -28,7 +27,7 @@ public final class OpenStoreButtonAction implements ButtonAction {
      * @param packageName The package name which should be opened in the Store.
      */
     // @JsonCreator
-    public OpenStoreButtonAction(@JsonProperty("packageName") String packageName) {
+    public OpenStoreButtonAction(String packageName) {
         this.packageName = packageName;
     }
 

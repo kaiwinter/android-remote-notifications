@@ -1,6 +1,5 @@
 package com.github.kaiwinter.androidremotenotifications.model.impl;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.kaiwinter.androidremotenotifications.model.UserNotification;
 
 import java.util.Calendar;
@@ -30,7 +29,7 @@ public final class PersistentNotification {
     /**
      * @param notification The {@link AlertDialogNotification} to persist, not <code>null</code>.
      */
-    public PersistentNotification(@JsonProperty("notification") UserNotification notification) {
+    public PersistentNotification(UserNotification notification) {
         if (notification == null) {
             throw new IllegalArgumentException("Notification must not be null");
         }

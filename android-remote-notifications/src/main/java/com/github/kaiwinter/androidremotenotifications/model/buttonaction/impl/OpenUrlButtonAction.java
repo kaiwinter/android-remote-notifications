@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.kaiwinter.androidremotenotifications.model.buttonaction.ButtonAction;
 
 import static com.github.kaiwinter.androidremotenotifications.RemoteNotifications.TAG;
@@ -19,7 +18,7 @@ public final class OpenUrlButtonAction implements ButtonAction {
     /**
      * @param link the link to open.
      */
-    public OpenUrlButtonAction(@JsonProperty("link") String link) {
+    public OpenUrlButtonAction(String link) {
         this.link = link;
     }
 

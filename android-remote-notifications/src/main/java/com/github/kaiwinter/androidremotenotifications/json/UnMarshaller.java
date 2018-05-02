@@ -1,13 +1,22 @@
 package com.github.kaiwinter.androidremotenotifications.json;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import com.github.kaiwinter.androidremotenotifications.model.UserNotification;
+import com.github.kaiwinter.androidremotenotifications.model.buttonaction.ButtonAction;
+import com.github.kaiwinter.androidremotenotifications.model.buttonaction.impl.ExitAppButtonAction;
+import com.github.kaiwinter.androidremotenotifications.model.buttonaction.impl.OpenStoreButtonAction;
+import com.github.kaiwinter.androidremotenotifications.model.buttonaction.impl.OpenUrlButtonAction;
+import com.github.kaiwinter.androidremotenotifications.model.impl.AlertDialogNotification;
 import com.github.kaiwinter.androidremotenotifications.model.impl.PersistentNotification;
+import com.github.kaiwinter.androidremotenotifications.model.impl.ToastNotification;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.Set;
 
@@ -21,13 +30,11 @@ public final class UnMarshaller {
      *
      * @param notifications the notifications
      * @return the JSON string
-     * @throws IOException if writing the notifications as JSON fails
      */
-    public static String getJsonFromPersistentNotifications(Set<PersistentNotification> notifications)
-            throws IOException {
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-
-        return ow.writeValueAsString(notifications);
+    public static String getJsonFromPersistentNotifications(Set<PersistentNotification> notifications) {
+        Type listType = new TypeToken<Set<PersistentNotification>>() {
+        }.getType();
+        return createGson().toJson(notifications, listType);
     }
 
     /**
@@ -35,12 +42,11 @@ public final class UnMarshaller {
      *
      * @param notifications the notifications
      * @return the JSON string
-     * @throws IOException if writing the notifications as JSON fails
      */
-    public static String getJsonFromNotifications(Set<UserNotification> notifications) throws IOException {
-
-        return new ObjectMapper().writerWithType(new TypeReference<Set<UserNotification>>() {
-        }).withDefaultPrettyPrinter().writeValueAsString(notifications);
+    public static String getJsonFromNotifications(Set<UserNotification> notifications) {
+        Type listType = new TypeToken<Set<UserNotification>>() {
+        }.getType();
+        return createGson().toJson(notifications, listType);
     }
 
     /**
@@ -51,10 +57,19 @@ public final class UnMarshaller {
      * @throws IOException if reading the JSON from the URL fails
      */
     public static Set<UserNotification> getNotificationsFromJson(URL url) throws IOException {
-        ObjectReader or = new ObjectMapper().reader().withType(new TypeReference<Set<UserNotification>>() {
-        });
 
-        return or.readValue(url);
+        Reader reader = null;
+        try {
+            reader = new InputStreamReader(url.openStream());
+
+            Type listType = new TypeToken<Set<UserNotification>>() {
+            }.getType();
+            return createGson().fromJson(reader, listType);
+        } finally {
+            if (reader != null) {
+                reader.close();
+            }
+        }
     }
 
     /**
@@ -62,12 +77,28 @@ public final class UnMarshaller {
      *
      * @param json the JSON string.
      * @return Set of {@link PersistentNotification}
-     * @throws IOException if reading the JSON from the string fails
      */
-    public static Set<PersistentNotification> getPersistentNotificationsFromJson(String json) throws IOException {
-        ObjectReader or = new ObjectMapper().reader().withType(new TypeReference<Set<PersistentNotification>>() {
-        });
+    public static Set<PersistentNotification> getPersistentNotificationsFromJson(String json) {
+        Type listType = new TypeToken<Set<PersistentNotification>>() {
+        }.getType();
+        return createGson().fromJson(json, listType);
+    }
 
-        return or.readValue(json);
+    private static Gson createGson() {
+        RuntimeTypeAdapterFactory<UserNotification> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
+                .of(UserNotification.class, "type")
+                .registerSubtype(AlertDialogNotification.class, "AlertDialogNotification")
+                .registerSubtype(ToastNotification.class, "ToastNotification");
+
+        RuntimeTypeAdapterFactory<ButtonAction> runtimeTypeAdapterButtonFactory = RuntimeTypeAdapterFactory
+                .of(ButtonAction.class, "type")
+                .registerSubtype(OpenUrlButtonAction.class, "OpenUrlButtonAction")
+                .registerSubtype(ExitAppButtonAction.class, "ExitAppButtonAction")
+                .registerSubtype(OpenStoreButtonAction.class, "OpenStoreButtonAction");
+
+        return new GsonBuilder()
+                .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
+                .registerTypeAdapterFactory(runtimeTypeAdapterButtonFactory)
+                .create();
     }
 }
