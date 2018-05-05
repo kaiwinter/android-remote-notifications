@@ -3,7 +3,7 @@
 A Google GCM/Amazon SNS alternative using pull instead of push.
 ## Main features
 - Independent user notifications (no Google GCM or Amazon SNS), just put a JSON file in the cloud
-- Framework will update available notifications automatically in defined time intervals (`now`, `daily`, `bi-weekly`, `weekly`, `monthly`)
+- Framework will update available notifications automatically in defined time intervals (`now`, `daily`, `weekly`, `bi-weekly`, `monthly`)
 - Flexible parameters:
   - start date for notification (distribute early, show later)
   - amount of times the notification should be shown
@@ -15,26 +15,16 @@ A Google GCM/Amazon SNS alternative using pull instead of push.
 - pro tip: as some users don't always update to the latest app versions you should integrate this framework in an early phase if you plan to use it at a later time.
 
 ## Download
-Maven
-```xml
-<dependency>
-  <groupId>com.github.kaiwinter</groupId>
-  <artifactId>android-remote-notifications</artifactId>
-  <version>1.1.0</version>
-  <type>aar</type>
-</dependency>
-```  
 Gradle:
 ```groovy
-compile 'com.github.kaiwinter:android-remote-notifications:1.1.0'
+implementation ('com.github.kaiwinter:android-remote-notifications:1.1.3@aar') {
+    transitive = true
+}
 ```
-Direct:
-- [Demo App](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.1.0/remotenotifications-example-1.1.0.apk)
-- [android-remote-notifications_1.1.0.aar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.1.0/android-remote-notifications-1.1.0.aar)
-- [android-remote-notifications_1.1.0-all.jar](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.1.0/android-remote-notifications-1.1.0-all.jar) This contains all jackson dependencies. I use this in an eclipse ant build
 
-## Live Demo:
-[Appetize.io](https://appetize.io/app/efkur5jaxuztahp6wtc5n65x74)
+## Demo:
+- [Demo App](https://github.com/kaiwinter/android-remote-notifications/releases/download/v1.1.0/remotenotifications-example-1.1.0.apk)
+- Live Demo: [Appetize.io](https://appetize.io/app/efkur5jaxuztahp6wtc5n65x74)
 
 ## How to integrate
 You can find the source code of the example app here: [MainActivity](https://github.com/kaiwinter/android-remote-notifications/blob/master/example/src/main/java/com/github/kaiwinter/androidremotenotifications/example/MainActivity.java)
@@ -108,18 +98,8 @@ First: You don´t have to write the JSON file by hand. Just use the API to initi
 ## Screenshots
 ![Preview](http://i.imgur.com/Hp1aowm.png)
 
-## ProGuard
-To keep the jackson annotations add this to your ProGuard configuration.
-```
-# android-remote-notifications
--keepattributes *Annotation*,EnclosingMethod,Signature
--keepnames class com.fasterxml.jackson.** { *; }
--dontwarn com.fasterxml.jackson.databind.**
--keep public class com.github.kaiwinter.** {*;}
-```
-
 ## License
-     Copyright 2015 Kai Winter
+     Copyright 2018 Kai Winter
      
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
