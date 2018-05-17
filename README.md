@@ -17,7 +17,7 @@ A Google GCM/Amazon SNS alternative using pull instead of push.
 ## Download
 Gradle:
 ```groovy
-implementation ('com.github.kaiwinter:android-remote-notifications:1.1.3@aar') {
+implementation ('com.github.kaiwinter:android-remote-notifications:1.1.4@aar') {
     transitive = true
 }
 ```
