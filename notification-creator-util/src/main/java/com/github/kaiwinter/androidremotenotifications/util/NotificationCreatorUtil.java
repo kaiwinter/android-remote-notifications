@@ -50,7 +50,7 @@ public final class NotificationCreatorUtil {
         printToConsole(list);
     }
 
-    private static void printToConsole(Set<UserNotification> set) throws IOException {
+    private static void printToConsole(Set<UserNotification> set) {
         String json = UnMarshaller.getJsonFromNotifications(set);
         System.out.println(json);
     }
