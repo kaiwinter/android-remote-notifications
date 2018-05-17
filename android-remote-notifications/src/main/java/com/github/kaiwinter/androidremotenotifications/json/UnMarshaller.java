@@ -1,5 +1,8 @@
 package com.github.kaiwinter.androidremotenotifications.json;
 
+import android.util.Log;
+
+import com.github.kaiwinter.androidremotenotifications.RemoteNotifications;
 import com.github.kaiwinter.androidremotenotifications.model.UserNotification;
 import com.github.kaiwinter.androidremotenotifications.model.buttonaction.ButtonAction;
 import com.github.kaiwinter.androidremotenotifications.model.buttonaction.impl.ExitAppButtonAction;
@@ -10,6 +13,8 @@ import com.github.kaiwinter.androidremotenotifications.model.impl.PersistentNoti
 import com.github.kaiwinter.androidremotenotifications.model.impl.ToastNotification;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 
@@ -18,6 +23,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.net.URL;
+import java.util.Collections;
 import java.util.Set;
 
 /**
@@ -65,6 +71,9 @@ public final class UnMarshaller {
             Type listType = new TypeToken<Set<UserNotification>>() {
             }.getType();
             return createGson().fromJson(reader, listType);
+        } catch (JsonSyntaxException | JsonIOException e) {
+            Log.e(RemoteNotifications.TAG, e.getMessage() + ": " + url);
+            return Collections.emptySet();
         } finally {
             if (reader != null) {
                 reader.close();

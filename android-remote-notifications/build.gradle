@@ -18,6 +18,9 @@ android {
     compileOptions {
         encoding "UTF-8"
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {

@@ -27,6 +27,13 @@ public final class Notification2Json2NotificationTest {
     }
 
     @Test
+    public void testNotificationFromURLInvalidAnswer() throws IOException {
+        URL url = Notification2Json2NotificationTest.class.getResource("/com/github/kaiwinter/androidremotenotifications/invalid_answer");
+        Set<UserNotification> notificationsFromJson = UnMarshaller.getNotificationsFromJson(url);
+        assertEquals(0, notificationsFromJson.size());
+    }
+
+    @Test
     public void testPersistentNotification() {
         NotificationConfiguration notificationConfiguration = new NotificationConfiguration();
         notificationConfiguration.setExecutionPolicy(ExecutionPolicy.ALWAYS);
