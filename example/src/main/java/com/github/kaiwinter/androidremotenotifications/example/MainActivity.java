@@ -33,8 +33,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         setTitle(R.string.app_name_long);
 
-        textViewStatus = (TextView) findViewById(R.id.textViewStatus);
-        textViewNotifications = (TextView) findViewById(R.id.textViewNotifications);
+        textViewStatus = findViewById(R.id.textViewStatus);
+        textViewNotifications = findViewById(R.id.textViewNotifications);
 
         initializeARN();
     }
