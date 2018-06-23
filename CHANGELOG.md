@@ -1,15 +1,19 @@
 Change Log
 ==========
 
-Version 1.1.0 *(2015-07-05)*
+Version 1.1.5 *(2018-06-23)*
 ----------------------------
- * Fix: Last update time wasn't saved which results in too many updates
- * New: Bi-weekly updates in UpdatePolicy
+ * Improved error handling on error while reading json file
+ 
+Version 1.1.4 *(2018-05-17)*
+----------------------------
+ * Improved error handling on missing/erroneous json file
 
 Version 1.1.3 *(2018-05-05)*
 ----------------------------
  * Switched from jackson to gson. This reduces the method count by ~4500 methods.
 
-Version 1.1.4 *(2018-05-17)*
+Version 1.1.0 *(2015-07-05)*
 ----------------------------
- * Improved error handling on missing/erroneous json file
+ * Fix: Last update time wasn't saved which results in too many updates
+ * New: Bi-weekly updates in UpdatePolicy
