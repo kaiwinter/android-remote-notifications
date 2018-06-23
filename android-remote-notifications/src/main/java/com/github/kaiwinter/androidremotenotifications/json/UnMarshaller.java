@@ -24,6 +24,7 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -70,7 +71,11 @@ public final class UnMarshaller {
 
             Type listType = new TypeToken<Set<UserNotification>>() {
             }.getType();
-            return createGson().fromJson(reader, listType);
+            Set<UserNotification> notifications = createGson().fromJson(reader, listType);
+            if (notifications == null) {
+                notifications = new HashSet<>();
+            }
+            return notifications;
         } catch (JsonSyntaxException | JsonIOException e) {
             Log.e(RemoteNotifications.TAG, e.getMessage() + ": " + url);
             return Collections.emptySet();
@@ -90,7 +95,11 @@ public final class UnMarshaller {
     public static Set<PersistentNotification> getPersistentNotificationsFromJson(String json) {
         Type listType = new TypeToken<Set<PersistentNotification>>() {
         }.getType();
-        return createGson().fromJson(json, listType);
+        Set<PersistentNotification> notifications = createGson().fromJson(json, listType);
+        if (notifications == null) {
+            notifications = new HashSet<>();
+        }
+        return notifications;
     }
 
     private static Gson createGson() {
